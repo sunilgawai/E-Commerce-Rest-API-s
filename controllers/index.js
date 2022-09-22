@@ -1,1 +1,1 @@
-export { default as storeController } from "./product/storeController";
+export { default as productController } from "./product/productController";
