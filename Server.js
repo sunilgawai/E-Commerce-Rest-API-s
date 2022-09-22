@@ -3,6 +3,7 @@ import { APP_PORT, DB_URL } from "./config";
 import mongoose from "mongoose";
 import router from "./routes";
 import { errorHandler } from "./middlewares";
+import path from "path";
 
 // DataBase Connection.
 mongoose.connect(DB_URL, {useNewUrlParser: true})
@@ -14,12 +15,14 @@ mongoose.connect(DB_URL, {useNewUrlParser: true})
 const app = express();
 
 // Middlewares init...
+global.appRoot = path.resolve(__dirname);
+app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 
 
 // Routes init...
-app.use(router);
+app.use('/api/v1', router);
 
 
 

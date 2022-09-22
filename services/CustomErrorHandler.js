@@ -16,7 +16,10 @@ class CustomErrorHandler extends Error{
         new CustomErrorHandler(401, message);
     }
 
-    // 
+    // server error.
+    static serverError(status, message = 'internal server error'){
+        new CustomErrorHandler(500, message)
+    }
 }
 
 
